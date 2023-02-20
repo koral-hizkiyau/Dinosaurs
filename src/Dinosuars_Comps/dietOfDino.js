@@ -9,13 +9,8 @@ function DietOfDino(props){
     let dietOfDino = location.state;
     
     useEffect(()=> {
-        if(dietOfDino !== 'All'){
        let newDinoArr = dinosArr.filter(dinoArr => dinoArr.diet == dietOfDino)
        setDinoArr(newDinoArr);
-        }
-        else{
-            setDinoArr(dinosArr);
-        }
     },[dietOfDino])
 
     

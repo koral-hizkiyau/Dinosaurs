@@ -25,8 +25,8 @@ export default function Nav() {
     setState({ ...state, [anchor]: open });
   };
   
-  const onClickText = () => {
-    console.log("clicl");
+  const onClickText = (text) => {
+    
   }
 
   const list = (anchor) => (
@@ -39,14 +39,20 @@ export default function Nav() {
     >
       <List>
         <h2 className='text-center py-3'>Filter</h2>
+        <ListItem>
+             <ListItemButton>
+              <ListItemIcon>
+              <img src="/images/icons/rex.png" alt="rexIcon"/>              </ListItemIcon>
+             <Link to="/" 
+              className='btn'><ListItemText primary="All Dinosaurs" /></Link> 
+            </ListItemButton></ListItem>
         <Divider />
         <h4 className='text-center py-3'>Sizes Of Dinosuar</h4>
-        {['All','Small', 'Medium','Large'].map((text, index) => (
-            
+        {['Small', 'Medium','Large'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <CircleRoundedIcon /> : <CircleRoundedIcon />}
+              <img src={'/images/icons/'+text+'.png'} alt={text+'Icon'}/>
               </ListItemIcon>
              <Link to="/DinoSize" state={text}
               className='btn'><ListItemText primary={text} /></Link> 
@@ -57,7 +63,7 @@ export default function Nav() {
       <Divider />
       <List>
         <h4 className='text-center py-3'>Diets Of Dinosuar</h4>
-        {['All','Carnivore', 'Herbivore'].map((text, index) => (
+        {['Carnivore', 'Herbivore'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -68,6 +74,17 @@ export default function Nav() {
             </ListItemButton>
           </ListItem>
         ))}
+      </List>
+      <Divider />
+
+      <List>
+        <h4 className='text-center py-3'>Weight Of Dinosuar</h4>
+          <ListItem disablePadding>
+            <ListItemButton>
+              {/* <Link to="/DinoDiet" state={text}
+              className='btn'><ListItemText primary={text} /></Link>  */}
+            </ListItemButton>
+          </ListItem>
       </List>
     </Box>
   );
