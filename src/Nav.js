@@ -1,20 +1,21 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import NumbersOutlinedIcon from '@mui/icons-material/NumbersOutlined';
-import CircleRoundedIcon from '@mui/icons-material/CircleRounded';
 import {Link} from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
+
+
 
 export default function Nav() {
   const [state, setState] = React.useState({
-    left: false
+    left: false,
+    right:false
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -25,12 +26,8 @@ export default function Nav() {
     setState({ ...state, [anchor]: open });
   };
   
-  const onClickText = (text) => {
-    
-  }
 
-  const list = (anchor) => (
-    
+  const listLeft = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
@@ -38,7 +35,7 @@ export default function Nav() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <h2 className='text-center py-3'>Filter</h2>
+        <h2 className='text-center py-3'>Menu</h2>
         <ListItem>
              <ListItemButton>
               <ListItemIcon>
@@ -75,34 +72,85 @@ export default function Nav() {
           </ListItem>
         ))}
       </List>
-      <Divider />
-
+    </Box>
+  );
+  const listRight = (anchor) => (
+    <Box
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
       <List>
-        <h4 className='text-center py-3'>Weight Of Dinosuar</h4>
-          <ListItem disablePadding>
+        <h2 className='text-center py-3'>Information</h2>
+        <ListItem>
+             <ListItemButton>
+
+             <Link to="/AboutDinosaurs" 
+              className='btn'><ListItemText primary="What are dinosaurs?" /></Link> 
+            </ListItemButton></ListItem>
+        <Divider />
+        {/* <h4 className='text-center py-3'>About Dinosaurs</h4>
+        {['Small', 'Medium','Large'].map((text, index) => (
+          <ListItem key={text} disablePadding>
             <ListItemButton>
-              {/* <Link to="/DinoDiet" state={text}
-              className='btn'><ListItemText primary={text} /></Link>  */}
+              <ListItemIcon>
+              <img src={'/images/icons/'+text+'.png'} alt={text+'Icon'}/>
+              </ListItemIcon>
+             <Link to="/DinoSize" state={text}
+              className='btn'><ListItemText primary={text} /></Link> 
             </ListItemButton>
           </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        <h4 className='text-center py-3'>Diets Of Dinosuar</h4>
+        {['Carnivore', 'Herbivore'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <img src="/images/icons/meat.png" alt="meatIcon"/>  : <img src="/images/icons/vegan.png" alt="veganIcon"/> }
+              </ListItemIcon>
+              <Link to="/DinoDiet" state={text}
+              className='btn'><ListItemText primary={text} /></Link> 
+            </ListItemButton>
+          </ListItem>
+        ))} */}
       </List>
     </Box>
   );
 
   return (
-    <div>
+    <div className='row'>
+      <div className='col-lg-6' style={{display:'flex',justifyContent:'left'}}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <button onClick={toggleDrawer(anchor, true)} className="btn btn-danger m-2">Menu</button>
+          <button onClick={toggleDrawer(anchor, true)} className="btn btn-danger" ><MenuIcon/></button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
           >
-            {list(anchor)}
+            {listLeft(anchor)}
           </Drawer>
         </React.Fragment>
       ))}
+      </div>
+      <div className='col-lg-6' style={{display:'flex',justifyContent:'right'}}>
+      {['right'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <button onClick={toggleDrawer(anchor, true)} className="btn btn-danger" ><MenuIcon/></button>
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
+            {listRight(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+      </div>
     </div>
   );
 }
