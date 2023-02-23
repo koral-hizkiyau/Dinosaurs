@@ -13,9 +13,8 @@ function App(props) {
   return (
     <Router>
     <div className="App" style={{backgroundColor:"#000000"}}>
-      <h1 className="titleApp py-3">Dinosaurs</h1>
       <div className="container">
-      <div className="row">
+      <div className="row py-3">
        <Nav/>
       </div></div> 
       <Routes >

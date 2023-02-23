@@ -9,7 +9,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import {Link} from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
-
+import "./CSS/nav.css";
 
 
 export default function Nav() {
@@ -17,6 +17,7 @@ export default function Nav() {
     left: false,
     right:false
   });
+
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {

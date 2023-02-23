@@ -16,7 +16,8 @@ function DietOfDino(props){
     
     return(
         <div className="continer-fluid p-4">  
-                   
+         <h1 className="titleApp" style={{marginBottom:"2%"}}>{dietOfDino} Dinosaurs</h1>
+         
         <div className="row">
             
             {  dinoArr.map(item => {
