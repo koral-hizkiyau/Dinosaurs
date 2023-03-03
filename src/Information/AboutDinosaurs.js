@@ -9,7 +9,7 @@ import { CardActionArea } from '@mui/material';
 function AboutDinosaurs(){
 
 return(
-    <div className="container" style={{marginTop:"25px"}}>
+    <div className="container" style={{margin:"110px 0px 0px 63px"}}>
         <div style={{color:"white"}}>--------------------------------------------------------------------------------------------------------------------------------------------------------</div>
          <Card style={{backgroundColor:"black"}}>
       <CardActionArea>

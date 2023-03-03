@@ -19,6 +19,9 @@ export default function Nav() {
   });
 
 
+
+  
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -30,7 +33,7 @@ export default function Nav() {
 
   const listLeft = (anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 265 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -45,7 +48,7 @@ export default function Nav() {
               className='btn'><ListItemText primary="All Dinosaurs" /></Link> 
             </ListItemButton></ListItem>
         <Divider />
-        <h4 className='text-center py-3'>Sizes Of Dinosuar</h4>
+        <h4 className='text-center py-3'>Sizes Of Dinosaurs</h4>
         {['Small', 'Medium','Large'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -60,7 +63,7 @@ export default function Nav() {
       </List>
       <Divider />
       <List>
-        <h4 className='text-center py-3'>Diets Of Dinosuar</h4>
+        <h4 className='text-center py-3'>Diets Of Dinosaurs</h4>
         {['Carnivore', 'Herbivore'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -77,13 +80,13 @@ export default function Nav() {
   );
   const listRight = (anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 275 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <h2 className='text-center py-3'>Information</h2>
+        <h3 className='text-center py-3'>Information</h3>
         <ListItem>
              <ListItemButton>
 
@@ -91,43 +94,32 @@ export default function Nav() {
               className='btn'><ListItemText primary="What are dinosaurs?" /></Link> 
             </ListItemButton></ListItem>
         <Divider />
-        {/* <h4 className='text-center py-3'>About Dinosaurs</h4>
-        {['Small', 'Medium','Large'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-              <img src={'/images/icons/'+text+'.png'} alt={text+'Icon'}/>
-              </ListItemIcon>
-             <Link to="/DinoSize" state={text}
-              className='btn'><ListItemText primary={text} /></Link> 
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <h3 className='text-center py-3'>Just For Fun</h3>
+        <ListItem>
+             <ListItemButton>
+             <Link to="/GamesDino" 
+              className='btn'><ListItemText primary="Chrome Dino Game" /></Link> 
+            </ListItemButton></ListItem>
+            <ListItem>
+             <ListItemButton>
+             <Link to="/DrawDino" 
+              className='btn'><ListItemText primary="Draw A Dinosaurs" /></Link> 
+            </ListItemButton></ListItem>
+            
       </List>
-      <Divider />
-      <List>
-        <h4 className='text-center py-3'>Diets Of Dinosuar</h4>
-        {['Carnivore', 'Herbivore'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <img src="/images/icons/meat.png" alt="meatIcon"/>  : <img src="/images/icons/vegan.png" alt="veganIcon"/> }
-              </ListItemIcon>
-              <Link to="/DinoDiet" state={text}
-              className='btn'><ListItemText primary={text} /></Link> 
-            </ListItemButton>
-          </ListItem>
-        ))} */}
-      </List>
+      
     </Box>
   );
 
   return (
+    
+    
     <div className='row'>
-      <div className='col-lg-6' style={{display:'flex',justifyContent:'left'}}>
+      
+      <div className='col-lg-6' style={{position:'absolute',top:"55px",left:"35px",display:"flex",justifyContent:"left"}}>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <button onClick={toggleDrawer(anchor, true)} className="btn btn-danger" ><MenuIcon/></button>
+          <button onClick={toggleDrawer(anchor, true)} className="btn btn-danger" >Menu</button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
@@ -138,7 +130,7 @@ export default function Nav() {
         </React.Fragment>
       ))}
       </div>
-      <div className='col-lg-6' style={{display:'flex',justifyContent:'right'}}>
+      <div className='col-lg-6' style={{position:'absolute',top:"55px",right:"35px",display:"flex",justifyContent:"right"}}>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
           <button onClick={toggleDrawer(anchor, true)} className="btn btn-danger" ><MenuIcon/></button>
@@ -152,6 +144,8 @@ export default function Nav() {
         </React.Fragment>
       ))}
       </div>
+     
     </div>
+   
   );
 }
