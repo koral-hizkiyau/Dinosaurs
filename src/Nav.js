@@ -105,7 +105,11 @@ export default function Nav() {
              <Link to="/DrawDino" 
               className='btn'><ListItemText primary="Draw A Dinosaurs" /></Link> 
             </ListItemButton></ListItem>
-            
+            <ListItem>
+             <ListItemButton>
+             <Link to="/backgroundImages" 
+              className='btn'><ListItemText primary="Background Images" /></Link> 
+            </ListItemButton></ListItem>  
       </List>
       
     </Box>

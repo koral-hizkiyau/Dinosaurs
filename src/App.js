@@ -7,6 +7,7 @@ import DietOfDino from './Dinosuars_Comps/dietOfDino';
 import AboutDinosaurs from './Information/AboutDinosaurs';
 import GamesDino from './JustForFun/gamesDino';
 import DrawDino from './JustForFun/drawDino';
+import BackgroundImages from './JustForFun/backgroundImages';
 import { useEffect, useState } from 'react';
 
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/AboutDinosaurs" element={<AboutDinosaurs/>}/>
         <Route path='/GamesDino' element={<GamesDino/>}/>
         <Route path="/DrawDino" element={<DrawDino/>}/>
+        <Route path='backgroundImages' element={<BackgroundImages/>}/>
         </Routes>
     </div>
     </Router>
